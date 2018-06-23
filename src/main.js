@@ -43,9 +43,12 @@ const fillTable = function(values) {
 
 const submitForm = function() {
     const usdElement = document.getElementById('usd');
-    console.log(usdElement.value);
+    console.log(parseFloat(usdElement.value));
     for (let key in coinsValues) {
-        coinsValues[key].price = coinsValues[key].price * parseFloat(usdElement.value);
+        const final = coinsValues[key].price * parseFloat(usdElement.value);
+        console.log(final);
+        coinsValues[key].price = final;
+        console.log(coinsValues[key].price);
     }
     fillTable(coinsValues);
 };

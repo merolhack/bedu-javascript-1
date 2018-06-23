@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <h3>Array values</h3>
+    <div>
+        <ul id="arrayValues"></ul>
+    </div>
+
+    <h3>Object values</h3>
+    <div>
+        <ul id="objectValues"></ul>
+    </div>
+
+    <h3>Types</h3>
+    <div id="types"></div>
+
+    <h3>Operations</h3>
+    <div id="operations"></div>
+
+    <h3>If else</h3>
+    <div>
+        <ul id="ifElse"></ul>
+    </div>
+
+    <button id="sumNumbers">Sum of numbers</button>
+    <hr>
+    <button id="checkCharacter">Check the character</button>
+    <hr>
+    <button id="startSetTimeOut">Start the setTimeOut function in two seconds</button>
+    <hr>
+    <h3>Date Object</h3>
+    <div>
+        <ul id="dateObject"></ul>
+    </div>
+
+    <script>
+        // Variables used in the page
+        const one = 1;
+        const two = '2';
+        const three = null;
+        const boolean = true;
+        const array = [one, two, three, boolean];
+        const object = {
+            one: one,
+            two: two,
+            three: three,
+            boolean: boolean
+        };
+        let arrayIterator = 0;
+        let objectIterator = 0;
+        // 0: l
+        // 1: o
+        // 2: r
+        const words = [
+            'lorem',
+            'ipsum',
+            'dolor',
+            'sit amet',
+        ];
+        // Title of the page
+        const header = document.getElementById('header');
+        const title = '<h1><center>This is the title</center></h1>';
+        const subtitle = '<p>Lorem ipsum dolor sit amet</p>';
+        header.innerHTML = title + subtitle;
+        // Loop the array of variables
+        const arrayValues = document.getElementById('arrayValues');
+        for (; arrayIterator < array.length;) {
+            const element = document.createElement('myArrayElements');
+            element.innerHTML = `<li>${array[arrayIterator]}</li>`;
+            arrayValues.appendChild(element);
+            arrayIterator++;
+        }
+        // Loop the object of variables
+        const objectValues = document.getElementById('objectValues');
+        for (let key in object) {
+            const element = document.createElement('myObjectElements');
+            element.innerHTML = `<li><strong>${key}</strong> = ${object[key]}</li>`;
+            objectValues.appendChild(element);
+            objectIterator++;
+        }
+        // Types of the variables
+        const types = document.getElementById('types');
+        types.innerHTML = `<ol>
+            <li>Type of the variable one <strong>${typeof one}</strong></li>
+            <li>Type of the variable two <strong>${typeof two}</strong></li>
+            <li>Type of the variable three <strong>${typeof three}</strong></li>
+            <li>Type of the variable boolean <strong>${typeof boolean}</strong></li>
+        </ol>`;
+        // Operations with the variables
+        const sumVariables = function(param1, param2) {
+            return param1 + param2;
+        }
+        const operations = document.getElementById('operations');
+        operations.innerHTML = `<ul>
+            <li><strong>one + two =</strong> ${sumVariables(one, two)}</li>
+            <li><strong>two + three =</strong> ${sumVariables(two, three)}</li>
+            <li><strong>one + three =</strong> ${sumVariables(one, three)}</li>
+            <li><strong>one + boolean =</strong> ${sumVariables(one, boolean)}</li>
+            <li><strong>two + boolean =</strong> ${sumVariables(two, boolean)}</li>
+        </ul>`;
+        console.log('Message 1');
+        // Check wich number is greater
+        const ifElse = document.getElementById('ifElse');
+        ifElse.innerHTML = (one > two) ? '<li>One is greater than two</li>' : '<li>Two is greater than One</li>' ;
+        // Ask for two numbers and sum them
+        const sumNumbersElement = document.getElementById('sumNumbers');
+        sumNumbersElement.addEventListener('click', function(element, event) {
+            const value1 = prompt('Enter the first number between 1 to 3');
+            const value2 = prompt('Enter the second number between 1 to 3');
+            const total = parseInt(value1) + parseInt(value2);
+            switch(total) {
+                case 2:
+                    alert(`Sum = ${total}`);
+                break;
+                case 3:
+                    alert(`Sum = ${total}`);
+                break;
+                case 4:
+                    alert(`Sum = ${total}`);
+                break;
+                case 5:
+                    alert(`Sum = ${total}`);
+                break;
+                case 6:
+                    alert(`Sum = ${total}`);
+                break;
+                default:
+                    alert('Invalid options');
+            }
+        });
+        // Check the entered character
+        const checkCharacterElement = document.getElementById('checkCharacter');
+        checkCharacterElement.addEventListener('click', function(element, event) {
+            const char = prompt('Enter a character between "a" and "d"');
+            switch(char.trim().toLocaleLowerCase()) {
+                case 'a':
+                    alert(`Character = ${char}`);
+                break;
+                case 'b':
+                    alert(`Character = ${char}`);
+                break;
+                case 'c':
+                    alert(`Character = ${char}`);
+                break;
+                case 'd':
+                    alert(`Character = ${char}`);
+                break;
+                default:
+                    alert('Invalid character');
+            }
+        });
+        // Start the setTimeout function
+        const startSetTimeOutElement = document.getElementById('startSetTimeOut');
+        startSetTimeOutElement.addEventListener('click', function(element, event) {
+            setTimeout(function() {
+                alert('Two seconds!!')
+            }, 2000);
+        });
+        // Format the date
+        const myDate = new Date();
+        const dateObject = document.getElementById('dateObject');
+        console.log('myDate', myDate);
+        dateObject.innerHTML = `<ol>
+            <li><strong>getDate:</strong> = ${myDate.getDate()}</li>
+            <li><strong>getDay:</strong> = ${myDate.getDay()}</li>
+            <li><strong>getFullYear:</strong> = ${myDate.getFullYear()}</li>
+            <li><strong>getMinutes:</strong> = ${myDate.getMinutes()}</li>
+        </ol>`;
+
+        // Set to uppercase the first letter of the word
+        for (let foo of words) {
+            const firstLetter = foo.slice(0,1);
+            const allLetters = foo.slice(1,foo.length);
+            console.log('foo', firstLetter.toLocaleUpperCase() + allLetters);
+        }
+        // Set to uppercase the first letter of the word
+        for (let bar in words) {
+            const firstLetter = words[bar].slice(0,1);
+            const allLetters = words[bar].slice(1,words[bar].length);
+            console.log('bar', firstLetter.toLocaleUpperCase() + allLetters);
+        }
+    </script>
+    
+    <noscript>
+        Tu navegador no soporta JS!!
+    </noscript>
+</body>
+</html>

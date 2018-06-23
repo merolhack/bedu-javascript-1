@@ -9,6 +9,33 @@
 </head>
 <body>
     
+    <form id="refresh">
+        <table>
+            <thead>
+                <th>Moneda</th>
+                <th>Costo actual</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>USD</td>
+                    <td><input id="usd" type="number" value="20.00" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <button type="submit">Refresh the table</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>Moneda</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody id="coins">
+        </tbody>
+    </table>
     <script src="src/main.js"></script>
 </body>
 </html>
